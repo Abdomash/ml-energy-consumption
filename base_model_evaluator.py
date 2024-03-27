@@ -7,18 +7,42 @@ import os
 import time
 
 def run_grid_searches(dataset_name, classifier, x, y, param_grids, test_size=0.2, random_state=42, cv=5, scoring='accuracy', n_jobs=-1):
+    """
+    Perform grid search on a given classifier using the provided parameter grids.
+
+    Args:
+        dataset_name (str): The name of the dataset.
+        classifier (object): The classifier object to be used for grid search.
+        x (array-like or DataFrame): The input features.
+        y (array-like or Series): The target variable.
+        param_grids (list of dict): The parameter grids to be searched.
+        test_size (float, optional): The proportion of the dataset to include in the test split. Defaults to 0.2.
+        random_state (int, optional): The seed used by the random number generator. Defaults to 42.
+        cv (int, optional): The number of folds in cross-validation. Defaults to 5.
+        scoring (str, optional): The scoring metric to evaluate the models. Defaults to 'accuracy'.
+        n_jobs (int, optional): The number of jobs to run in parallel. Defaults to -1.
+
+    Returns:
+        None
+    """
     classifier_name = classifier.__class__.__name__
 
-
+    # Define file names and paths
     emissions_temp_file_name = f'temp_{dataset_name}_{classifier_name}_emissions.csv'
     results_file_path = os.path.join("results", f'{dataset_name}_{classifier_name}_results.csv')
-    
+
+    # Remove any existing files
     if os.path.exists(results_file_path):
         os.remove(results_file_path)
-    
     if os.path.exists(emissions_temp_file_name):
         os.remove(emissions_temp_file_name)
-    
+
+    # Initialize the emissions tracker
+    tracker = EmissionsTracker(project_name=f'{dataset_name}_{classifier_name}',
+                               output_file=emissions_temp_file_name,
+                               measure_power_secs=5,
+                               )
+
     # Encode the categorical variables if needed
     if isinstance(x, pd.DataFrame):
         x_encoded = pd.get_dummies(x)
@@ -31,13 +55,7 @@ def run_grid_searches(dataset_name, classifier, x, y, param_grids, test_size=0.2
     else:
         y_encoded = y
 
-    # Split dataset
     x_train, x_test, y_train, y_test = train_test_split(x_encoded, y_encoded, test_size=test_size, random_state=random_state)
-
-    # Initialize the emissions tracker
-    tracker = EmissionsTracker(project_name=f'{dataset_name}_{classifier_name}',
-                               output_file=emissions_temp_file_name,
-                               measure_power_secs=5)
 
     results = []
 
@@ -80,53 +98,27 @@ def run_grid_searches(dataset_name, classifier, x, y, param_grids, test_size=0.2
             'elapsed_time': elapsed_time,
         })
 
-        # # Output the results for this grid search
-        # print(f"")
-        # print(f"Results for Grid Search {i+1}:")
-        # print(f"Best Parameters: {best_params}")
-        # print(f"Test Accuracy: {test_accuracy}")
-        # print(f"Energy Consumed: {energy_consumed} kWh")
-        # print(f"Elapsed Time: {elapsed_time} seconds")
-
     print(f"\n----------------")
     print(f"All Grid Searches completed.")
 
     # Convert results to a DataFrame
     results_df = pd.DataFrame(results)
 
+    # Wait until emissions temp file is created
     while not os.path.exists(emissions_temp_file_name): 
         os.sleep(1)
     
+    # Read emissions temp file
     emissions_df = pd.read_csv(emissions_temp_file_name)
+
+    # Concatenate results and emissions dataframes
     full_results_df = pd.concat([results_df, emissions_df], axis=1)
     
     # Save the DataFrame to a CSV file
     results_df.to_csv(results_file_path, index=False)
 
-    # Remove Temporary file
+    # Remove emissions temp file
     os.remove(emissions_temp_file_name)
     
     print(f"Saved results to '{results_file_path}'")
 
-'''
-# Example usage
-# Note: Replace `fetch_ucirepo` and `param_grids` with actual data and parameters.
-
-# Fetch dataset
-censusIncome = fetch_ucirepo(id=20)  # Placeholder
-x = censusIncome.data.features  # Placeholder
-y = censusIncome.data.targets  # Placeholder
-
-# Define a classifier, e.g., RandomForestClassifier from sklearn.ensemble
-from sklearn.ensemble import RandomForestClassifier
-classifier = RandomForestClassifier()
-
-# Define multiple hyperparameter grids
-param_grids = [
-    {'max_depth': range(1, 10), 'min_samples_split': [2, 4], 'min_samples_leaf': [1, 2]},
-    # Add more param_grids as needed
-]
-
-# Run grid searches and save results to CSV
-results = run_grid_searches('censusIncome', classifier, x, y, param_grids)
-'''
