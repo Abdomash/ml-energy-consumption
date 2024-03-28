@@ -27,9 +27,10 @@ def run_grid_searches(dataset_name, classifier, x, y, param_grids, test_size=0.2
     """
     classifier_name = classifier.__class__.__name__
 
+    
     # Define file names and paths
     emissions_temp_file_name = f'temp_{dataset_name}_{classifier_name}_emissions.csv'
-    results_file_path = os.path.join("results", f'{dataset_name}_{classifier_name}_results.csv')
+    results_file_path = os.path.join("results", os.environ['DEVICE_NAME'], f'{dataset_name}_{classifier_name}_results.csv')
 
     # Remove any existing files
     if os.path.exists(results_file_path):
@@ -115,7 +116,7 @@ def run_grid_searches(dataset_name, classifier, x, y, param_grids, test_size=0.2
     full_results_df = pd.concat([results_df, emissions_df], axis=1)
     
     # Save the DataFrame to a CSV file
-    results_df.to_csv(results_file_path, index=False)
+    full_results_df.to_csv(results_file_path, index=False)
 
     # Remove emissions temp file
     os.remove(emissions_temp_file_name)
