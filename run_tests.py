@@ -15,6 +15,6 @@ if not os.path.exists(os.path.join('results',os.environ['DEVICE_NAME'])):
 # for each dataset, run the decision tree, neural nets, random forest, and k-nearest-neighbor models
 for name, dataset_id in dataset.items():
     run_decision_tree(name, dataset_id)
-    # run_neural_nets(name, dataset_id)
-    # run_random_forest(name, dataset_id)
-    # run_knn(name, dataset_id)
+    run_neural_nets(name, dataset_id)
+    run_random_forest(name, dataset_id)
+    run_knn(name, dataset_id)
