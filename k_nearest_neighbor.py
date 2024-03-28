@@ -12,7 +12,6 @@ def run_knn(name, dataset_id):
     y = censusIncome.data.targets
 
     # Define multiple hyperparameter grids
-    e,f,g = 10, 10, 10
     param_grids = [
         {'n_neighbors': range(1, 31, 5)},
         {'n_neighbors': range(1, 31, 5), 'weights': ['uniform', 'distance']},

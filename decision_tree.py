@@ -11,11 +11,11 @@ def run_decision_tree(name, dataset_id):
     y = dataset.data.targets
 
     # Define multiple hyperparameter grids
-    e,f,g = 10, 10, 10
+    max_value = 30
     param_grids = [
-        {'max_depth': range(1, e, 5), 'min_samples_split': range(2, f, 6), 'min_samples_leaf': range(1, g, 5)},
-        {'max_depth': range(1, e, 3), 'min_samples_split': range(2, f, 4), 'min_samples_leaf': range(1, g, 3)},
-        {'max_depth': range(1, e, 2), 'min_samples_split': range(2, f, 2), 'min_samples_leaf': range(1, g, 2)},
+        {'max_depth': range(1, max_value, 5), 'min_samples_split': range(2, max_value, 6), 'min_samples_leaf': range(1, max_value, 5)},
+        {'max_depth': range(1, max_value, 3), 'min_samples_split': range(2, max_value, 4), 'min_samples_leaf': range(1, max_value, 3)},
+        {'max_depth': range(1, max_value, 2), 'min_samples_split': range(2, max_value, 2), 'min_samples_leaf': range(1, max_value, 2)},
         # Continue adding more grids as needed, each time increasing the range/values
     ]
 
