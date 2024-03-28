@@ -3,10 +3,9 @@ from ucimlrepo import fetch_ucirepo
 from base_model_evaluator import run_grid_searches
 
 # Define your datasets list
-dataset_list = {"census": 20, "RT-IoT2022": 942, "onlineRetail": 352, "Diabetes": 296, "CDCHealthIndicator": 891}
 
 # Loop through each dataset
-for name, dataset_id in dataset_list.items():
+def run_random_forest(name, dataset_id):
     # Fetch the dataset
     dataset = fetch_ucirepo(id=dataset_id)
 

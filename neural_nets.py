@@ -2,11 +2,9 @@ from sklearn.neural_network import MLPClassifier
 from ucimlrepo import fetch_ucirepo
 from base_model_evaluator import run_grid_searches
 
-# Define your datasets list
-dataset_list = {"census": 20, "RT-IoT2022": 942, "onlineRetail": 352, "Diabetes": 296, "CDCHealthIndicator": 891}
 
 # Loop through each dataset
-for name, dataset_id in dataset_list.items():
+def run_neural_nets(name, dataset_id):
     # Fetch the dataset
     dataset = fetch_ucirepo(id=dataset_id)
 
@@ -18,7 +16,7 @@ for name, dataset_id in dataset_list.items():
     param_grids = [
         {'hidden_layer_sizes': [(100,)]},
         {'hidden_layer_sizes': [(50,), (100,), (150,)]},
-        {'hidden_layer_sizes': [(50,), (100,), (150,) (200,)]},
+        {'hidden_layer_sizes': [(50,), (100,), (150,), (200,)]},
         {'hidden_layer_sizes': [(50,), (100,), (50, 50), (100, 100)],
          'alpha': [0.0001, 0.001, 0.01]},
         {'hidden_layer_sizes': [(50,), (100,), (50, 50), (100, 100), (50, 100, 50)],

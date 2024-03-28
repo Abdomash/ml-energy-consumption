@@ -4,7 +4,7 @@ from base_model_evaluator import run_grid_searches
 # possible other datasets -> "OnlineNewsPopularity": 332, "PhishingWebsites": 327
 # Fetch dataset
 dataset_list = {"census": 20, "RT-IoT2022": 942, "onlineRetail": 352, "Diabetes": 296, "CDCHealthIndicator": 891}
-for name, dataset_id in dataset_list.items():
+def run_knn(name, dataset_id):
     censusIncome = fetch_ucirepo(id=dataset_id)
 
     # Data (as pandas dataframes)
