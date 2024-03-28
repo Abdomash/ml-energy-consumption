@@ -1,3 +1,4 @@
 scikit-learn
 codecarbon
 setuptools
+ucimlrepo
