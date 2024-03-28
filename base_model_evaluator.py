@@ -31,6 +31,8 @@ def run_grid_searches(dataset_name, classifier, x, y, param_grids, test_size=0.2
     # Define file names and paths
     emissions_temp_file_name = f'temp_{dataset_name}_{classifier_name}_emissions.csv'
     results_file_path = os.path.join("results", os.environ['DEVICE_NAME'], f'{dataset_name}_{classifier_name}_results.csv')
+    emissions_back_file_path = os.path.join("results", os.environ['DEVICE_NAME'], f'backup_{dataset_name}_{classifier_name}_emissions.csv')
+    results_back_file_path = os.path.join("results", os.environ['DEVICE_NAME'], f'backup_{dataset_name}_{classifier_name}_results.csv')
 
     # Remove any existing files
     if os.path.exists(results_file_path):
@@ -106,18 +108,22 @@ def run_grid_searches(dataset_name, classifier, x, y, param_grids, test_size=0.2
     results_df = pd.DataFrame(results)
 
     # Wait until emissions temp file is created
-    while not os.path.exists(emissions_temp_file_name): 
-        os.sleep(1)
+    while not os.path.exists(emissions_temp_file_name):
+        time.sleep(1)
     
     # Read emissions temp file
     emissions_df = pd.read_csv(emissions_temp_file_name)
+
+    # Backup the original datasets before concatenating them
+    results_df.to_csv(results_back_file_path, index=False)
+    emissions_df.to_csv(emissions_back_file_path, index=False)
 
     # Concatenate results and emissions dataframes
     full_results_df = pd.concat([results_df, emissions_df], axis=1)
     
     # Save the DataFrame to a CSV file
     full_results_df.to_csv(results_file_path, index=False)
-
+    
     # Remove emissions temp file
     os.remove(emissions_temp_file_name)
     
