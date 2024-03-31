@@ -1,15 +1,8 @@
 from sklearn.neighbors import KNeighborsClassifier
-from ucimlrepo import fetch_ucirepo
 from base_model_evaluator import run_grid_searches 
-# possible other datasets -> "OnlineNewsPopularity": 332, "PhishingWebsites": 327
-# Fetch dataset
-dataset_list = {"census": 20, "RT-IoT2022": 942, "onlineRetail": 352, "Diabetes": 296, "CDCHealthIndicator": 891}
-def run_knn(name, dataset_id):
-    censusIncome = fetch_ucirepo(id=dataset_id)
 
-    # Data (as pandas dataframes)
-    x = censusIncome.data.features
-    y = censusIncome.data.targets
+# Fetch dataset
+def run_knn(name, x, y):
 
     # Define multiple hyperparameter grids
     param_grids = [

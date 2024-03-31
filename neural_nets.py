@@ -1,16 +1,9 @@
 from sklearn.neural_network import MLPClassifier
-from ucimlrepo import fetch_ucirepo
 from base_model_evaluator import run_grid_searches
 
 
 # Loop through each dataset
-def run_neural_nets(name, dataset_id):
-    # Fetch the dataset
-    dataset = fetch_ucirepo(id=dataset_id)
-
-    # Data (as pandas dataframes)
-    X = dataset.data.features
-    y = dataset.data.targets
+def run_neural_nets(name, x, y):
 
     # Define the parameter grid for the neural network
     param_grids = [

@@ -1,15 +1,9 @@
 from sklearn.tree import DecisionTreeClassifier
-from ucimlrepo import fetch_ucirepo
 from base_model_evaluator import run_grid_searches 
 # possible other datasets -> "OnlineNewsPopularity": 332, "PhishingWebsites": 327
 # Fetch dataset
-def run_decision_tree(name, dataset_id):
-    dataset = fetch_ucirepo(id=dataset_id)
-
-    # Data (as pandas dataframes)
-    x = dataset.data.features
-    y = dataset.data.targets
-
+def run_decision_tree(name, x, y):
+    
     # Define multiple hyperparameter grids
     max_value = 30
     param_grids = [

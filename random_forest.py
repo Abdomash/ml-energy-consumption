@@ -1,17 +1,8 @@
 from sklearn.ensemble import RandomForestClassifier
-from ucimlrepo import fetch_ucirepo
 from base_model_evaluator import run_grid_searches
 
-# Define your datasets list
-
 # Loop through each dataset
-def run_random_forest(name, dataset_id):
-    # Fetch the dataset
-    dataset = fetch_ucirepo(id=dataset_id)
-
-    # Data (as pandas dataframes)
-    X = dataset.data.features
-    y = dataset.data.targets
+def run_random_forest(name, x, y):
 
     # Define the parameter grid for the Random Forest
     param_grids = [
