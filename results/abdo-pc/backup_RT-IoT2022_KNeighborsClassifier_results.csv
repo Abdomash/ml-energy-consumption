@@ -1,0 +1,5 @@
+dataset_name,classifier,grid_search_number,param_grid,best_params,best_cv_score,test_accuracy,energy_consumed,elapsed_time
+RT-IoT2022,KNeighborsClassifier,1,"{'n_neighbors': range(1, 31, 5)}",{'n_neighbors': 1},0.9910348990710023,0.9915123456790124,0.0003645622199105101,62.36548948287964
+RT-IoT2022,KNeighborsClassifier,2,"{'n_neighbors': range(1, 31, 5), 'weights': ['uniform', 'distance']}","{'n_neighbors': 1, 'weights': 'uniform'}",0.9910348990710023,0.9915123456790124,0.0008616172801626528,123.00059342384338
+RT-IoT2022,KNeighborsClassifier,3,"{'n_neighbors': range(1, 31, 3), 'weights': ['uniform', 'distance'], 'metric': ['euclidean', 'manhattan']}","{'metric': 'manhattan', 'n_neighbors': 1, 'weights': 'uniform'}",0.9918572938811971,0.9921621182586094,0.009031755892330316,1789.6571872234344
+RT-IoT2022,KNeighborsClassifier,4,"{'n_neighbors': range(1, 31, 3), 'weights': ['uniform', 'distance'], 'metric': ['minkowski', 'euclidean'], 'p': [1, 2]}","{'metric': 'minkowski', 'n_neighbors': 1, 'p': 1, 'weights': 'uniform'}",0.9918572938811971,0.9921621182586094,0.01904166859254006,2161.273562669754

@@ -1,0 +1,6 @@
+dataset_name,classifier,grid_search_number,param_grid,best_params,best_cv_score,test_accuracy,energy_consumed,elapsed_time
+RT-IoT2022,MLPClassifier,1,"{'hidden_layer_sizes': [(100,)]}","{'hidden_layer_sizes': (100,)}",0.9630837783120686,0.9657244964262508,0.0008344650353477957,102.82390475273132
+RT-IoT2022,MLPClassifier,2,"{'hidden_layer_sizes': [(50,), (100,), (150,)]}","{'hidden_layer_sizes': (50,)}",0.9650939754277612,0.9637345679012346,0.0020901147545905868,153.81466627120972
+RT-IoT2022,MLPClassifier,3,"{'hidden_layer_sizes': [(50,), (100,), (150,), (200,)]}","{'hidden_layer_sizes': (100,)}",0.9556925061602438,0.9152858999350227,0.004185769615913852,257.4246406555176
+RT-IoT2022,MLPClassifier,4,"{'hidden_layer_sizes': [(50,), (100,), (50, 50), (100, 100)], 'alpha': [0.0001, 0.001, 0.01]}","{'alpha': 0.001, 'hidden_layer_sizes': (100,)}",0.966413839380246,0.8969704353476283,-0.003838561136386087,488.1414830684662
+RT-IoT2022,MLPClassifier,5,"{'hidden_layer_sizes': [(50,), (100,), (50, 50), (100, 100), (50, 100, 50)], 'alpha': [0.0001, 0.001, 0.01, 0.1], 'activation': ['relu', 'tanh', 'logistic'], 'solver': ['sgd', 'adam'], 'learning_rate_init': [0.001, 0.01]}","{'activation': 'relu', 'alpha': 0.01, 'hidden_layer_sizes': (100,), 'learning_rate_init': 0.001, 'solver': 'adam'}",0.9671550468421198,0.9712069525666017,0.017458544987609265,4676.066011190414
