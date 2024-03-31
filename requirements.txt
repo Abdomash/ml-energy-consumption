@@ -2,3 +2,4 @@ scikit-learn
 codecarbon
 setuptools
 ucimlrepo
+matplotlib
