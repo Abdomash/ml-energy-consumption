@@ -20,4 +20,4 @@ def run_neural_nets(name, x, y):
     ]
 
     # Run grid searches using the custom run_grid_searches function
-    run_grid_searches(name, MLPClassifier(max_iter=100), X, y, param_grids)
+    run_grid_searches(name, MLPClassifier(max_iter=100), x, y, param_grids)

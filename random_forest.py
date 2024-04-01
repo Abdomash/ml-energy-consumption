@@ -24,4 +24,4 @@ def run_random_forest(name, x, y):
     ]
 
     # Run grid searches using the custom run_grid_searches function
-    run_grid_searches(name, RandomForestClassifier(), X, y, param_grids)
+    run_grid_searches(name, RandomForestClassifier(), x, y, param_grids)
