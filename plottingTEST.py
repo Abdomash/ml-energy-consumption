@@ -1,12 +1,14 @@
 import os
 import pandas as pd
 import matplotlib.pyplot as plt
+from matplotlib.lines import Line2D
 
-# Step 1: Traverse Subdirectories
+# Step 1: Traverse Subdirectories to collect CSV files
 results_dir = 'results'
 output_dir = 'plots'
 if not os.path.exists(output_dir):
     os.makedirs(output_dir)
+
 def collect_experiment_files(results_dir):
     experiment_files = {}
     for machine_name in os.listdir(results_dir):
@@ -26,43 +28,60 @@ def combine_files_by_classifier_and_machine(experiment_files):
         combined_files[classifier_name] = {}
         for machine_name, files in machine_data.items():
             dfs = [pd.read_csv(file) for file in files]
-            combined_df = pd.concat(dfs)
+            combined_df = pd.concat(dfs, ignore_index=True)
             combined_files[classifier_name][machine_name] = combined_df
     return combined_files
 
-# Step 4: Generate Subplots for Each Classifier and Machine
-def generate_subplots_for_classifiers_and_machines(combined_files):
+# Step 3: Generate Combined Plots with Custom Legends for Classifiers
+def generate_combined_plots_for_classifiers(combined_files):
+    marker_styles = ['X', 'o']  # X for Machine 1, o for Machine 2
+    marker_sizes = [100, 50]  # Larger size for Machine 1, standard for Machine 2
+    # Add a specific color for grid search number 5 and adjust others as needed
+    colors = ['red', 'green', 'blue', 'purple', 'orange']  # Include a specific color for grid 5
+    
     for classifier_name, machine_data in combined_files.items():
-        for machine_name, df in machine_data.items():
+        fig, ax = plt.subplots(figsize=(10, 6))
+        fig.suptitle(f'Classifier: {classifier_name}', fontsize=16)
+        machine_legend_elements = []
+        grid_legend_elements = []
+        used_grid_numbers = []
+
+        # Enable grid with default settings
+        ax.grid(True, which='both', linestyle='--', linewidth=0.5, color='gray')
+
+        for machine_idx, (machine_name, df) in enumerate(machine_data.items()):
+            marker = marker_styles[machine_idx % len(marker_styles)]
+            size = marker_sizes[machine_idx % len(marker_sizes)]
             datasets = df['dataset_name'].unique()
-            num_datasets = len(datasets)
-            fig, axes = plt.subplots(num_datasets, 1, figsize=(10, 6*num_datasets))
-            fig.suptitle(f'Classifier: {classifier_name} - Machine: {machine_name}', fontsize=16)
-            for i, dataset in enumerate(datasets):
+            
+            for dataset in datasets:
                 dataset_df = df[df['dataset_name'] == dataset]
-                axes[i].set_title(f'Dataset: {dataset}', fontsize=14)
-                axes[i].set_xlabel('Energy Consumed', fontsize=12)
-                axes[i].set_ylabel('Test Accuracy', fontsize=12)
-
-                # Plot each parameter grid value as a separate scatter plot
-                parameter_grid_values = dataset_df['param_grid'].unique()
-                for param_grid_value in parameter_grid_values:
-                    grid_results = dataset_df[dataset_df['param_grid'] == param_grid_value]
-                    axes[i].scatter(grid_results['energy_consumed'], grid_results['test_accuracy'], label=param_grid_value)
-
-                # Place the legend below the x-axis
-                axes[i].legend(title='Param Grid', bbox_to_anchor=(0.5, -0.15), loc='upper center', fontsize=10, ncol=len(parameter_grid_values))
                 
-                # Manually adjust layout to prevent overlap
-                fig.subplots_adjust(top=0.9, bottom=0.1, left=0.1, right=0.9, hspace=0.4, wspace=0.4)
+                for grid_search_number in dataset_df['grid_search_number'].unique():
+                    color = colors[grid_search_number % len(colors)]
+                    grid_results = dataset_df[dataset_df['grid_search_number'] == grid_search_number]
+                    ax.scatter(grid_results['energy_consumed'], grid_results['test_accuracy'], marker=marker, s=size, color=color)
+                    if grid_search_number not in used_grid_numbers:
+                        grid_legend_elements.append(Line2D([0], [0], marker='o', color='w', label=f'Grid {grid_search_number}', markerfacecolor=color, markersize=10))
+                        used_grid_numbers.append(grid_search_number)
+            
+            machine_legend_elements.append(Line2D([0], [0], marker=marker, color='w', label=f'Machine: {machine_idx + 1}', markerfacecolor='gray', markersize=10))
 
-            # Save plot as file
-            output_filename = f'{classifier_name}_{machine_name}_plot.png'
-            output_path = os.path.join(output_dir, output_filename)
-            plt.savefig(output_path)
-            plt.close()
+        ax.set_xlabel('Energy Consumed', fontsize=12)
+        ax.set_ylabel('Test Accuracy', fontsize=12)
+        
+        # Create and place legends
+        machine_legend = ax.legend(handles=machine_legend_elements, title='Machines', loc='upper left', bbox_to_anchor=(1.05, 1))
+        plt.gca().add_artist(machine_legend)
+        ax.legend(handles=grid_legend_elements, title='Grid Search Number', loc='upper left', bbox_to_anchor=(1.05, 0.5))
+        
+        plt.subplots_adjust(top=0.9, bottom=0.1, left=0.1, right=0.75, hspace=0.4, wspace=0.4)
+        output_filename = f'{classifier_name}_combined_plot.png'
+        output_path = os.path.join('plots', output_filename)
+        plt.savefig(output_path, bbox_inches='tight')
+        plt.close()
 
 # Main execution
 experiment_files = collect_experiment_files(results_dir)
 combined_files = combine_files_by_classifier_and_machine(experiment_files)
-generate_subplots_for_classifiers_and_machines(combined_files)
+generate_combined_plots_for_classifiers(combined_files)
