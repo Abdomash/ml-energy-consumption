@@ -1,0 +1,6 @@
+dataset_name,classifier,grid_search_number,param_grid,best_params,best_cv_score,test_accuracy,energy_consumed,elapsed_time
+covtype,MLPClassifier,1,"{'hidden_layer_sizes': [(100,)]}","{'hidden_layer_sizes': (100,)}",0.7576833001532832,0.7715463456193041,0.0072131113674006615,864.8556320667267
+covtype,MLPClassifier,2,"{'hidden_layer_sizes': [(50,), (100,), (150,)]}","{'hidden_layer_sizes': (100,)}",0.7695354586851769,0.7530012133938022,0.016648360308420106,1442.5025715827942
+covtype,MLPClassifier,3,"{'hidden_layer_sizes': [(50,), (100,), (150,), (200,)]}","{'hidden_layer_sizes': (150,)}",0.7687802996408052,0.7618133783120917,0.029076835486170363,2138.4907269477844
+covtype,MLPClassifier,4,"{'hidden_layer_sizes': [(50,), (100,), (50, 50), (100, 100)], 'alpha': [0.0001, 0.001, 0.01]}","{'alpha': 0.0001, 'hidden_layer_sizes': (100, 100)}",0.8427440253230076,0.8501329569804567,0.06328406486709025,5945.982515096664
+covtype,MLPClassifier,5,"{'hidden_layer_sizes': [(50,), (100,), (50, 50), (100, 100), (50, 100, 50)], 'alpha': [0.0001, 0.001, 0.01, 0.1], 'activation': ['relu', 'tanh', 'logistic'], 'solver': ['sgd', 'adam'], 'learning_rate_init': [0.001, 0.01]}","{'activation': 'relu', 'alpha': 0.0001, 'hidden_layer_sizes': (50, 100, 50), 'learning_rate_init': 0.001, 'solver': 'adam'}",0.8544047238292913,0.8165623951188867,0.21372965291372817,26153.956300020218

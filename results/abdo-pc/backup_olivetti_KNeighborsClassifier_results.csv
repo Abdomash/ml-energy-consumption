@@ -1,0 +1,5 @@
+dataset_name,classifier,grid_search_number,param_grid,best_params,best_cv_score,test_accuracy,energy_consumed,elapsed_time
+olivetti,KNeighborsClassifier,1,"{'n_neighbors': range(1, 31, 5)}",{'n_neighbors': 1},0.903125,0.9125,2.206881916821761e-06,0.42192673683166504
+olivetti,KNeighborsClassifier,2,"{'n_neighbors': range(1, 31, 5), 'weights': ['uniform', 'distance']}","{'n_neighbors': 1, 'weights': 'uniform'}",0.903125,0.9125,5.782879161670499e-06,0.4288904666900635
+olivetti,KNeighborsClassifier,3,"{'n_neighbors': range(1, 31, 3), 'weights': ['uniform', 'distance'], 'metric': ['euclidean', 'manhattan']}","{'metric': 'manhattan', 'n_neighbors': 1, 'weights': 'uniform'}",0.928125,0.9375,1.4635865179966479e-05,1.5850019454956055
+olivetti,KNeighborsClassifier,4,"{'n_neighbors': range(1, 31, 3), 'weights': ['uniform', 'distance'], 'metric': ['minkowski', 'euclidean'], 'p': [1, 2]}","{'metric': 'minkowski', 'n_neighbors': 1, 'p': 1, 'weights': 'uniform'}",0.928125,0.9375,2.737220941513612e-05,2.2935683727264404
