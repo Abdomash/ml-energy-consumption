@@ -33,55 +33,45 @@ def combine_files_by_classifier_and_machine(experiment_files):
     return combined_files
 
 # Step 3: Generate Combined Plots with Custom Legends for Classifiers
-def generate_combined_plots_for_classifiers(combined_files):
-    marker_styles = ['X', 'o']  # X for Machine 1, o for Machine 2
-    marker_sizes = [100, 50]  # Larger size for Machine 1, standard for Machine 2
-    # Add a specific color for grid search number 5 and adjust others as needed
-    colors = ['red', 'green', 'blue', 'purple', 'orange']  # Include a specific color for grid 5
+def generate_separate_line_plots_for_datasets(combined_files):
+    machine_colors = ['blue', 'green']  # Color for each machine
+    line_styles = ['-', '--']  # Solid line for Machine 1, dashed line for Machine 2
     
     for classifier_name, machine_data in combined_files.items():
-        fig, ax = plt.subplots(figsize=(10, 6))
-        fig.suptitle(f'Classifier: {classifier_name}', fontsize=16)
-        machine_legend_elements = []
-        grid_legend_elements = []
-        used_grid_numbers = []
+        datasets = set()
+        for df in machine_data.values():
+            datasets.update(df['dataset_name'].unique())
 
-        # Enable grid with default settings
-        ax.grid(True, which='both', linestyle='--', linewidth=0.5, color='gray')
+        for dataset in datasets:
+            fig, ax = plt.subplots(figsize=(10, 6))
+            fig.suptitle(f'{classifier_name.split("Classifier")[0]} - {dataset}', fontsize=16, ha='right')
+            machine_legend_elements = []
 
-        for machine_idx, (machine_name, df) in enumerate(machine_data.items()):
-            marker = marker_styles[machine_idx % len(marker_styles)]
-            size = marker_sizes[machine_idx % len(marker_sizes)]
-            datasets = df['dataset_name'].unique()
-            
-            for dataset in datasets:
+            ax.grid(True, which='both', linestyle='--', linewidth=0.5, color='gray')
+
+            for machine_idx, (machine_name, df) in enumerate(machine_data.items()):
+                color = machine_colors[machine_idx % len(machine_colors)]
+                line_style = line_styles[machine_idx % len(line_styles)]
                 dataset_df = df[df['dataset_name'] == dataset]
-                
-                for grid_search_number in dataset_df['grid_search_number'].unique():
-                    color = colors[grid_search_number % len(colors)]
-                    grid_results = dataset_df[dataset_df['grid_search_number'] == grid_search_number]
-                    ax.scatter(grid_results['energy_consumed'], grid_results['test_accuracy'], marker=marker, s=size, color=color)
-                    if grid_search_number not in used_grid_numbers:
-                        grid_legend_elements.append(Line2D([0], [0], marker='o', color='w', label=f'Grid {grid_search_number}', markerfacecolor=color, markersize=10))
-                        used_grid_numbers.append(grid_search_number)
-            
-            machine_legend_elements.append(Line2D([0], [0], marker=marker, color='w', label=f'Machine: {machine_idx + 1}', markerfacecolor='gray', markersize=10))
+                sorted_df = dataset_df.sort_values(by='grid_search_number')
 
-        ax.set_xlabel('Energy Consumed', fontsize=12)
-        ax.set_ylabel('Test Accuracy', fontsize=12)
-        
-        # Create and place legends
-        machine_legend = ax.legend(handles=machine_legend_elements, title='Machines', loc='upper left', bbox_to_anchor=(1.05, 1))
-        plt.gca().add_artist(machine_legend)
-        ax.legend(handles=grid_legend_elements, title='Grid Search Number', loc='upper left', bbox_to_anchor=(1.05, 0.5))
-        
-        plt.subplots_adjust(top=0.9, bottom=0.1, left=0.1, right=0.75, hspace=0.4, wspace=0.4)
-        output_filename = f'{classifier_name}_combined_plot.png'
-        output_path = os.path.join('plots', output_filename)
-        plt.savefig(output_path, bbox_inches='tight')
-        plt.close()
+                ax.plot(sorted_df['energy_consumed'], sorted_df['test_accuracy'], label=f'Machine {machine_idx + 1}', marker='o', linestyle=line_style, color=color)
+                machine_legend_elements.append(Line2D([0], [0], color=color, label=f'Machine {machine_idx + 1}', marker='o', linestyle=line_style))
+
+            ax.set_xlabel('Energy Consumed', fontsize=12)
+            ax.set_ylabel('Test Accuracy', fontsize=12)
+            
+            # Create and place legend
+            ax.legend(handles=machine_legend_elements, loc='best', title='Machines')
+            
+            plt.subplots_adjust(top=0.9, bottom=0.1, left=0.1, right=0.75, hspace=0.4, wspace=0.4)
+            output_filename = f'{classifier_name}_{dataset}_line_plot.png'
+            output_path = os.path.join('plots', output_filename)
+            plt.savefig(output_path, bbox_inches='tight')
+            plt.close()
 
 # Main execution
 experiment_files = collect_experiment_files(results_dir)
 combined_files = combine_files_by_classifier_and_machine(experiment_files)
-generate_combined_plots_for_classifiers(combined_files)
+generate_separate_line_plots_for_datasets(combined_files)
+
