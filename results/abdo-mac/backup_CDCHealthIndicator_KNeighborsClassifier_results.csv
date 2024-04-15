@@ -1,0 +1,5 @@
+dataset_name,classifier,grid_search_number,param_grid,best_params,best_cv_score,test_accuracy,energy_consumed,elapsed_time
+CDCHealthIndicator,KNeighborsClassifier,1,"{'n_neighbors': range(1, 31, 5)}",{'n_neighbors': 26},0.8612770000328002,0.8627995900346894,0.010220810414150178,1463.6475629806519
+CDCHealthIndicator,KNeighborsClassifier,2,"{'n_neighbors': range(1, 31, 5), 'weights': ['uniform', 'distance']}","{'n_neighbors': 26, 'weights': 'uniform'}",0.8612770000328002,0.8627995900346894,0.031611937442133795,2882.5933182239532
+CDCHealthIndicator,KNeighborsClassifier,3,"{'n_neighbors': range(1, 31, 3), 'weights': ['uniform', 'distance'], 'metric': ['euclidean', 'manhattan']}","{'metric': 'manhattan', 'n_neighbors': 28, 'weights': 'uniform'}",0.8626862555211361,0.8631937874487543,0.10949973649831549,10925.279686927795
+CDCHealthIndicator,KNeighborsClassifier,4,"{'n_neighbors': range(1, 31, 3), 'weights': ['uniform', 'distance'], 'metric': ['minkowski', 'euclidean'], 'p': [1, 2]}","{'metric': 'minkowski', 'n_neighbors': 28, 'p': 1, 'weights': 'uniform'}",0.8626862555211361,0.8631937874487543,0.25627992926921167,20619.140270471573

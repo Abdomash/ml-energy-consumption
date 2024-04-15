@@ -1,0 +1,6 @@
+dataset_name,classifier,grid_search_number,param_grid,best_params,best_cv_score,test_accuracy,energy_consumed,elapsed_time
+olivetti,MLPClassifier,1,"{'hidden_layer_sizes': [range(1, 201, 100)]}","{'hidden_layer_sizes': range(1, 201, 100)}",0.0375,0.0,5.556704989259378e-06,0.8180747032165527
+olivetti,MLPClassifier,2,"{'hidden_layer_sizes': [range(1, 201, 50)]}","{'hidden_layer_sizes': range(1, 201, 50)}",0.028125,0.0,1.0383867669271893e-05,0.715806245803833
+olivetti,MLPClassifier,3,"{'hidden_layer_sizes': [range(1, 201, 25)]}","{'hidden_layer_sizes': range(1, 201, 25)}",0.025,0.0,1.769285999237621e-05,1.0505502223968506
+olivetti,MLPClassifier,4,"{'hidden_layer_sizes': [range(1, 201, 25)], 'alpha': [0.001, 0.01]}","{'alpha': 0.001, 'hidden_layer_sizes': range(1, 201, 25)}",0.0625,0.0,3.4471171168415985e-05,2.420978307723999
+olivetti,MLPClassifier,5,"{'hidden_layer_sizes': [range(1, 201, 25)], 'alpha': [0.001, 0.01], 'activation': ['relu', 'tanh', 'logistic']}","{'activation': 'relu', 'alpha': 0.01, 'hidden_layer_sizes': range(1, 201, 25)}",0.115625,0.0,6.841295039747815e-05,4.9002909660339355

@@ -1,0 +1,6 @@
+dataset_name,classifier,grid_search_number,param_grid,best_params,best_cv_score,test_accuracy,energy_consumed,elapsed_time
+olivetti,RandomForestClassifier,1,"{'n_estimators': [10, 50, 100]}",{'n_estimators': 100},0.89375,0.9125,4.519862835242714e-05,6.55159068107605
+olivetti,RandomForestClassifier,2,"{'n_estimators': [100, 200], 'max_depth': [None, 10, 20]}","{'max_depth': None, 'n_estimators': 200}",0.91875,0.9375,0.00019455149498380622,21.46604871749878
+olivetti,RandomForestClassifier,3,"{'n_estimators': [100, 200], 'max_depth': [None, 10, 20], 'min_samples_split': [2, 5]}","{'max_depth': None, 'min_samples_split': 5, 'n_estimators': 200}",0.9125,0.9125,0.00043632257890463045,34.65614366531372
+olivetti,RandomForestClassifier,4,"{'n_estimators': [100, 200, 300], 'max_depth': [None, 10, 20], 'min_samples_split': [2, 5], 'min_samples_leaf': [1, 2]}","{'max_depth': None, 'min_samples_leaf': 2, 'min_samples_split': 5, 'n_estimators': 200}",0.928125,0.875,0.0012849043067347454,121.5000422000885
+olivetti,RandomForestClassifier,5,"{'n_estimators': [100, 200, 300], 'max_depth': [None, 10, 20, 30], 'min_samples_split': [2, 5, 10], 'min_samples_leaf': [1, 2, 4], 'bootstrap': [True, False]}","{'bootstrap': True, 'max_depth': 30, 'min_samples_leaf': 1, 'min_samples_split': 5, 'n_estimators': 300}",0.925,0.925,0.007149317625578005,832.7077639102936

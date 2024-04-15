@@ -1,0 +1,5 @@
+dataset_name,classifier,grid_search_number,param_grid,best_params,best_cv_score,test_accuracy,energy_consumed,elapsed_time
+census,KNeighborsClassifier,1,"{'n_neighbors': range(1, 31, 5)}",{'n_neighbors': 26},0.5190284020298557,0.5139727710103388,0.00046821348571743306,66.78676700592041
+census,KNeighborsClassifier,2,"{'n_neighbors': range(1, 31, 5), 'weights': ['uniform', 'distance']}","{'n_neighbors': 26, 'weights': 'uniform'}",0.5190284020298557,0.5139727710103388,0.0011961838371373423,96.72721529006958
+census,KNeighborsClassifier,3,"{'n_neighbors': range(1, 31, 3), 'weights': ['uniform', 'distance'], 'metric': ['euclidean', 'manhattan']}","{'metric': 'manhattan', 'n_neighbors': 28, 'weights': 'uniform'}",0.5207687073793923,0.5190910021496571,0.007739623844664003,922.8652548789978
+census,KNeighborsClassifier,4,"{'n_neighbors': range(1, 31, 3), 'weights': ['uniform', 'distance'], 'metric': ['minkowski', 'euclidean'], 'p': [1, 2]}","{'metric': 'minkowski', 'n_neighbors': 28, 'p': 1, 'weights': 'uniform'}",0.5207687073793923,0.5190910021496571,0.01679988991495165,1249.226040840149

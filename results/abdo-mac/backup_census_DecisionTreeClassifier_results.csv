@@ -1,0 +1,4 @@
+dataset_name,classifier,grid_search_number,param_grid,best_params,best_cv_score,test_accuracy,energy_consumed,elapsed_time
+census,DecisionTreeClassifier,1,"{'max_depth': range(1, 30, 5), 'min_samples_split': range(2, 30, 6), 'min_samples_leaf': range(1, 30, 5)}","{'max_depth': 6, 'min_samples_leaf': 1, 'min_samples_split': 26}",0.5722365077626146,0.5716040536390623,0.00036869047203809044,52.51489186286926
+census,DecisionTreeClassifier,2,"{'max_depth': range(1, 30, 3), 'min_samples_split': range(2, 30, 4), 'min_samples_leaf': range(1, 30, 3)}","{'max_depth': 7, 'min_samples_leaf': 1, 'min_samples_split': 26}",0.5734393425125204,0.5731395229808578,0.0018025844826350674,205.10815000534058
+census,DecisionTreeClassifier,3,"{'max_depth': range(1, 30, 2), 'min_samples_split': range(2, 30, 2), 'min_samples_leaf': range(1, 30, 2)}","{'max_depth': 9, 'min_samples_leaf': 1, 'min_samples_split': 24}",0.5749749461283216,0.5762104616644488,0.00842730547703464,943.363107919693

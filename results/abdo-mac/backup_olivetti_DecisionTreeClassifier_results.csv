@@ -1,0 +1,4 @@
+dataset_name,classifier,grid_search_number,param_grid,best_params,best_cv_score,test_accuracy,energy_consumed,elapsed_time
+olivetti,DecisionTreeClassifier,1,"{'max_depth': range(1, 30, 5), 'min_samples_split': range(2, 30, 6), 'min_samples_leaf': range(1, 30, 5)}","{'max_depth': 26, 'min_samples_leaf': 1, 'min_samples_split': 2}",0.484375,0.4625,0.0009457590679710408,127.47893452644348
+olivetti,DecisionTreeClassifier,2,"{'max_depth': range(1, 30, 3), 'min_samples_split': range(2, 30, 4), 'min_samples_leaf': range(1, 30, 3)}","{'max_depth': 28, 'min_samples_leaf': 4, 'min_samples_split': 2}",0.521875,0.375,0.004282092378199905,474.3141505718231
+olivetti,DecisionTreeClassifier,3,"{'max_depth': range(1, 30, 2), 'min_samples_split': range(2, 30, 2), 'min_samples_leaf': range(1, 30, 2)}","{'max_depth': 29, 'min_samples_leaf': 1, 'min_samples_split': 2}",0.54375,0.3625,0.019379871882701936,2119.583253145218

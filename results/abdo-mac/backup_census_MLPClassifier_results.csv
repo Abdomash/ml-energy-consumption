@@ -1,0 +1,6 @@
+dataset_name,classifier,grid_search_number,param_grid,best_params,best_cv_score,test_accuracy,energy_consumed,elapsed_time
+census,MLPClassifier,1,"{'hidden_layer_sizes': [range(1, 201, 100)]}","{'hidden_layer_sizes': range(1, 201, 100)}",0.5063343006408925,0.5231855870611117,5.498805260781412e-05,7.913053274154663
+census,MLPClassifier,2,"{'hidden_layer_sizes': [range(1, 201, 50)]}","{'hidden_layer_sizes': range(1, 201, 50)}",0.508739930839229,0.5052717780734978,0.00018927854824646765,19.126636266708374
+census,MLPClassifier,3,"{'hidden_layer_sizes': [range(1, 201, 25)]}","{'hidden_layer_sizes': range(1, 201, 25)}",0.5160597061461448,0.5052717780734978,0.000874968074626084,97.91351819038391
+census,MLPClassifier,4,"{'hidden_layer_sizes': [range(1, 201, 25)], 'alpha': [0.001, 0.01]}","{'alpha': 0.001, 'hidden_layer_sizes': range(1, 201, 25)}",0.5105318947028326,0.5052717780734978,0.0016037230742067148,104.28689551353455
+census,MLPClassifier,5,"{'hidden_layer_sizes': [range(1, 201, 25)], 'alpha': [0.001, 0.01], 'activation': ['relu', 'tanh', 'logistic']}","{'activation': 'relu', 'alpha': 0.01, 'hidden_layer_sizes': range(1, 201, 25)}",0.5162639231616858,0.5246186917801208,0.0050623945204476585,492.2951476573944
