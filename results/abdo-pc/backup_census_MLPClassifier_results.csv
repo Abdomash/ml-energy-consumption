@@ -1,6 +1,5 @@
 dataset_name,classifier,grid_search_number,param_grid,best_params,best_cv_score,test_accuracy,energy_consumed,elapsed_time
-census,MLPClassifier,1,"{'hidden_layer_sizes': [range(1, 201, 100)]}","{'hidden_layer_sizes': range(1, 201, 100)}",0.5063854842621337,0.5052717780734978,0.00013727150745498266,18.76620626449585
-census,MLPClassifier,2,"{'hidden_layer_sizes': [range(1, 201, 50)]}","{'hidden_layer_sizes': range(1, 201, 50)}",0.5063854842621336,0.5052717780734978,0.0003470208420608552,28.6310875415802
-census,MLPClassifier,3,"{'hidden_layer_sizes': [range(1, 201, 25)]}","{'hidden_layer_sizes': range(1, 201, 25)}",0.5119133153561836,0.5052717780734978,0.0008404626491683053,67.41311645507812
-census,MLPClassifier,4,"{'hidden_layer_sizes': [range(1, 201, 25)], 'alpha': [0.001, 0.01]}","{'alpha': 0.001, 'hidden_layer_sizes': range(1, 201, 25)}",0.523634875539597,0.5352646125499028,0.0020677566685237537,200.44861245155334
-census,MLPClassifier,5,"{'hidden_layer_sizes': [range(1, 201, 25)], 'alpha': [0.001, 0.01], 'activation': ['relu', 'tanh', 'logistic']}","{'activation': 'relu', 'alpha': 0.01, 'hidden_layer_sizes': range(1, 201, 25)}",0.5256574113330061,0.5326031323574573,0.004209186775071778,389.5398509502411
+census,MLPClassifier,1,"{'hidden_layer_sizes': [(100,), (50, 50)]}","{'hidden_layer_sizes': (50, 50)}",0.4217539757126708,0.32705496980243626,0.00042474162004220103,76.17306327819824
+census,MLPClassifier,2,"{'hidden_layer_sizes': [(100,), (50, 50), (100, 100), (200, 200)]}","{'hidden_layer_sizes': (200, 200)}",0.5342564300079209,0.5084450813798751,0.0015215358432450097,195.94455647468567
+census,MLPClassifier,3,"{'hidden_layer_sizes': [(100,), (50, 50), (100, 100), (200, 200), (300, 300)]}","{'hidden_layer_sizes': (100, 100)}",0.5323368411537538,0.5297369229194391,0.003444303138065879,343.3954288959503
+census,MLPClassifier,4,"{'hidden_layer_sizes': [(100,), (50, 50), (100, 100), (200, 200), (300, 300)], 'alpha': [0.0001, 0.001], 'activation': ['relu', 'tanh', 'logistic']}","{'activation': 'relu', 'alpha': 0.0001, 'hidden_layer_sizes': (100, 100)}",0.5306733734634147,0.5348551540587573,0.007935430721580577,822.9344537258148
