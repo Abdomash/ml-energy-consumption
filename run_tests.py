@@ -21,7 +21,7 @@ dataset = {
     "CDCHealthIndicator": (fetch_ucirepo(id=891).data.features, fetch_ucirepo(id=891).data.targets)
 }
 # Set the folder name to where the results will be saved as an environment variable
-os.environ['DEVICE_NAME'] = 'abdo-pc' # Change this to the name of your device
+os.environ['DEVICE_NAME'] = 'Abdallah-pc' # Change this to the name of your device
 
 if not os.path.exists(os.path.join('results',os.environ['DEVICE_NAME'])):
     os.makedirs(os.path.join('results',os.environ['DEVICE_NAME']))

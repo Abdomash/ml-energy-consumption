@@ -1,6 +1,5 @@
 dataset_name,classifier,grid_search_number,param_grid,best_params,best_cv_score,test_accuracy,energy_consumed,elapsed_time
-olivetti,MLPClassifier,1,"{'hidden_layer_sizes': [(100,)]}","{'hidden_layer_sizes': (100,)}",0.171875,0.1,4.8027790541890995e-05,6.876013994216919
-olivetti,MLPClassifier,2,"{'hidden_layer_sizes': [(50,), (100,), (150,)]}","{'hidden_layer_sizes': (150,)}",0.66875,0.6625,0.0001655267508860743,16.74484872817993
-olivetti,MLPClassifier,3,"{'hidden_layer_sizes': [(50,), (100,), (150,), (200,)]}","{'hidden_layer_sizes': (200,)}",0.85,0.7875,0.0003590069025846854,27.624699115753174
-olivetti,MLPClassifier,4,"{'hidden_layer_sizes': [(50,), (100,), (50, 50), (100, 100)], 'alpha': [0.0001, 0.001, 0.01]}","{'alpha': 0.01, 'hidden_layer_sizes': (100, 100)}",0.8125,0.8625,0.0006610149849716092,42.88948893547058
-olivetti,MLPClassifier,5,"{'hidden_layer_sizes': [(50,), (100,), (50, 50), (100, 100), (50, 100, 50)], 'alpha': [0.0001, 0.001, 0.01, 0.1], 'activation': ['relu', 'tanh', 'logistic'], 'solver': ['sgd', 'adam'], 'learning_rate_init': [0.001, 0.01]}","{'activation': 'tanh', 'alpha': 0.001, 'hidden_layer_sizes': (100, 100), 'learning_rate_init': 0.01, 'solver': 'sgd'}",0.953125,0.925,0.004783999034234892,585.1711394786835
+olivetti,MLPClassifier,1,"{'hidden_layer_sizes': [(100,), (50, 50)]}","{'hidden_layer_sizes': (50, 50)}",0.465625,0.5375,5.685662081307478e-05,8.066860675811768
+olivetti,MLPClassifier,2,"{'hidden_layer_sizes': [(100,), (50, 50), (100, 100), (200, 200)]}","{'hidden_layer_sizes': (200, 200)}",0.890625,0.8875,0.0002340715865102188,25.102755546569824
+olivetti,MLPClassifier,3,"{'hidden_layer_sizes': [(100,), (50, 50), (100, 100), (200, 200), (300, 300)]}","{'hidden_layer_sizes': (300, 300)}",0.903125,0.9,0.0005202834385055559,40.6716947555542
+olivetti,MLPClassifier,4,"{'hidden_layer_sizes': [(100,), (50, 50), (100, 100), (200, 200), (300, 300)], 'alpha': [0.0001, 0.001], 'activation': ['relu', 'tanh', 'logistic']}","{'activation': 'tanh', 'alpha': 0.0001, 'hidden_layer_sizes': (300, 300)}",0.9375,0.9125,0.002042684607132685,216.05253219604492
