@@ -1,5 +1,5 @@
 dataset_name,classifier,grid_search_number,param_grid,best_params,best_cv_score,test_accuracy,energy_consumed,elapsed_time
-olivetti,MLPClassifier,1,"{'hidden_layer_sizes': [(100,), (50, 50)]}","{'hidden_layer_sizes': (50, 50)}",0.465625,0.5375,5.685662081307478e-05,8.066860675811768
-olivetti,MLPClassifier,2,"{'hidden_layer_sizes': [(100,), (50, 50), (100, 100), (200, 200)]}","{'hidden_layer_sizes': (200, 200)}",0.890625,0.8875,0.0002340715865102188,25.102755546569824
-olivetti,MLPClassifier,3,"{'hidden_layer_sizes': [(100,), (50, 50), (100, 100), (200, 200), (300, 300)]}","{'hidden_layer_sizes': (300, 300)}",0.903125,0.9,0.0005202834385055559,40.6716947555542
-olivetti,MLPClassifier,4,"{'hidden_layer_sizes': [(100,), (50, 50), (100, 100), (200, 200), (300, 300)], 'alpha': [0.0001, 0.001], 'activation': ['relu', 'tanh', 'logistic']}","{'activation': 'tanh', 'alpha': 0.0001, 'hidden_layer_sizes': (300, 300)}",0.9375,0.9125,0.002042684607132685,216.05253219604492
+olivetti,MLPClassifier,1,"{'hidden_layer_sizes': [(100,), (50, 50)]}","{'hidden_layer_sizes': (50, 50)}",0.53125,0.7875,5.8170218962361894e-05,8.235626935958862
+olivetti,MLPClassifier,2,"{'hidden_layer_sizes': [(100,), (50, 50), (100, 100), (200, 200)]}","{'hidden_layer_sizes': (200, 200)}",0.85625,0.925,0.0002433687649193568,26.174835205078125
+olivetti,MLPClassifier,3,"{'hidden_layer_sizes': [(100,), (50, 50), (100, 100), (200, 200), (300, 300)]}","{'hidden_layer_sizes': (300, 300)}",0.8875,0.9,0.00054234556803769,42.288235902786255
+olivetti,MLPClassifier,4,"{'hidden_layer_sizes': [(100,), (50, 50), (100, 100), (200, 200), (300, 300)], 'alpha': [0.0001, 0.001], 'activation': ['relu', 'tanh', 'logistic']}","{'activation': 'tanh', 'alpha': 0.0001, 'hidden_layer_sizes': (300, 300)}",0.925,0.925,0.002107841536368717,221.3397147655487

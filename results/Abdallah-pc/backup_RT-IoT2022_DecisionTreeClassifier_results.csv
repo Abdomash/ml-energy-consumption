@@ -1,5 +1,5 @@
 dataset_name,classifier,grid_search_number,param_grid,best_params,best_cv_score,test_accuracy,energy_consumed,elapsed_time
-RT-IoT2022,DecisionTreeClassifier,1,"{'max_depth': range(1, 31, 12)}",{'max_depth': 13},0.9974515942031854,0.9972384665367121,2.48733372826747e-05,3.593198776245117
-RT-IoT2022,DecisionTreeClassifier,2,"{'max_depth': range(1, 31, 6), 'min_samples_split': range(2, 17, 4)}","{'max_depth': 19, 'min_samples_split': 2}",0.9975226658623184,0.9976851851851852,0.00012941930120032372,15.027759552001953
-RT-IoT2022,DecisionTreeClassifier,3,"{'max_depth': range(1, 31, 3), 'min_samples_split': range(2, 17, 2)}","{'max_depth': 25, 'min_samples_split': 2}",0.9974515957494541,0.997482131254061,0.0005242672754264966,56.80538892745972
-RT-IoT2022,DecisionTreeClassifier,4,"{'max_depth': range(1, 31, 3), 'min_samples_split': range(2, 17, 2), 'min_samples_leaf': range(1, 17, 2)}","{'max_depth': 28, 'min_samples_leaf': 1, 'min_samples_split': 4}",0.9974312896347621,0.9976445743989604,0.0035602715459245537,437.47048473358154
+RT-IoT2022,DecisionTreeClassifier,1,"{'max_depth': range(1, 31, 12)}",{'max_depth': 25},0.9961824705394211,0.9962638076673165,2.3716488356309742e-05,3.355926036834717
+RT-IoT2022,DecisionTreeClassifier,2,"{'max_depth': range(1, 31, 6), 'min_samples_split': range(2, 17, 4)}","{'max_depth': 19, 'min_samples_split': 2}",0.9962535416831312,0.9962638076673165,0.00012506294434166504,14.267236709594727
+RT-IoT2022,DecisionTreeClassifier,3,"{'max_depth': range(1, 31, 3), 'min_samples_split': range(2, 17, 2)}","{'max_depth': 16, 'min_samples_split': 2}",0.9963550701948989,0.9961013645224172,0.0005106590813403403,54.30913972854614
+RT-IoT2022,DecisionTreeClassifier,4,"{'max_depth': range(1, 31, 3), 'min_samples_split': range(2, 17, 2), 'min_samples_leaf': range(1, 17, 2)}","{'max_depth': 16, 'min_samples_leaf': 1, 'min_samples_split': 2}",0.9963550701948989,0.9961013645224172,0.0034069033959112935,410.62198305130005

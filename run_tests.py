@@ -46,4 +46,4 @@ for name, (data, target) in dataset.items():
     run_decision_tree(name, data, target)
     run_neural_nets(name, data, target)
     run_random_forest(name, data, target)
-    run_knn(name, data, target)
+    # run_knn(name, data, target)
