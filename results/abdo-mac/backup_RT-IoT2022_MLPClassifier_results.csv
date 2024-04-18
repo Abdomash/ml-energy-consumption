@@ -1,6 +1,0 @@
-dataset_name,classifier,grid_search_number,param_grid,best_params,best_cv_score,test_accuracy,energy_consumed,elapsed_time
-RT-IoT2022,MLPClassifier,1,"{'hidden_layer_sizes': [range(1, 201, 100)]}","{'hidden_layer_sizes': range(1, 201, 100)}",0.7692526364820295,0.8025503573749188,0.00021007558683018256,29.985241413116455
-RT-IoT2022,MLPClassifier,2,"{'hidden_layer_sizes': [range(1, 201, 50)]}","{'hidden_layer_sizes': range(1, 201, 50)}",0.7692323319136062,0.7674220272904484,0.0005412140144785767,46.994608879089355
-RT-IoT2022,MLPClassifier,3,"{'hidden_layer_sizes': [range(1, 201, 25)]}","{'hidden_layer_sizes': range(1, 201, 25)}",0.7769691425246333,0.7674220272904484,0.0014630285272925596,131.1588649749756
-RT-IoT2022,MLPClassifier,4,"{'hidden_layer_sizes': [range(1, 201, 25)], 'alpha': [0.001, 0.01]}","{'alpha': 0.001, 'hidden_layer_sizes': range(1, 201, 25)}",0.7813243162782948,0.767503248862898,0.005586144674502253,587.2423233985901
-RT-IoT2022,MLPClassifier,5,"{'hidden_layer_sizes': [range(1, 201, 25)], 'alpha': [0.001, 0.01], 'activation': ['relu', 'tanh', 'logistic']}","{'activation': 'relu', 'alpha': 0.01, 'hidden_layer_sizes': range(1, 201, 25)}",0.7923095362131752,0.7674626380766731,0.011118463277836742,789.4899401664734

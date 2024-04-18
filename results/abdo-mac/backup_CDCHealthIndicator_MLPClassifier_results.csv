@@ -1,6 +1,0 @@
-dataset_name,classifier,grid_search_number,param_grid,best_params,best_cv_score,test_accuracy,energy_consumed,elapsed_time
-CDCHealthIndicator,MLPClassifier,1,"{'hidden_layer_sizes': [range(1, 201, 100)]}","{'hidden_layer_sizes': range(1, 201, 100)}",0.8622181522833641,0.8650268054241564,0.0005650833952055447,80.71323800086975
-CDCHealthIndicator,MLPClassifier,2,"{'hidden_layer_sizes': [range(1, 201, 50)]}","{'hidden_layer_sizes': range(1, 201, 50)}",0.8621343858670336,0.8620900346893724,0.0034886961480856556,416.3352267742157
-CDCHealthIndicator,MLPClassifier,3,"{'hidden_layer_sizes': [range(1, 201, 25)]}","{'hidden_layer_sizes': range(1, 201, 25)}",0.860971496357022,0.8648494165878272,0.017925843142551585,2047.7100450992584
-CDCHealthIndicator,MLPClassifier,4,"{'hidden_layer_sizes': [range(1, 201, 25)], 'alpha': [0.001, 0.01]}","{'alpha': 0.001, 'hidden_layer_sizes': range(1, 201, 25)}",0.8625088710795232,0.8623265531378114,0.03264572849296776,2081.496422767639
-CDCHealthIndicator,MLPClassifier,5,"{'hidden_layer_sizes': [range(1, 201, 25)], 'alpha': [0.001, 0.01], 'activation': ['relu', 'tanh', 'logistic']}","{'activation': 'tanh', 'alpha': 0.001, 'hidden_layer_sizes': range(1, 201, 25)}",0.862686260498597,0.8623462630085147,0.04779779457113375,2146.435185432434
