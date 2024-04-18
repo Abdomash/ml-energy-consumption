@@ -1,5 +1,5 @@
 dataset_name,classifier,grid_search_number,param_grid,best_params,best_cv_score,test_accuracy,energy_consumed,elapsed_time
-olivetti,RandomForestClassifier,1,"{'n_estimators': [10, 50, 100]}",{'n_estimators': 100},0.925,0.875,3.0220858545062993e-05,5.471813440322876
-olivetti,RandomForestClassifier,2,"{'n_estimators': [10, 50, 100, 200], 'max_depth': [None, 10, 20]}","{'max_depth': None, 'n_estimators': 200}",0.928125,0.9375,0.00013410635221832012,18.634270429611206
-olivetti,RandomForestClassifier,3,"{'n_estimators': [10, 50, 100, 200], 'max_depth': [None, 10, 20], 'min_samples_split': [2, 5]}","{'max_depth': None, 'min_samples_split': 2, 'n_estimators': 200}",0.921875,0.9,0.0003117680141998512,31.90184736251831
-olivetti,RandomForestClassifier,4,"{'n_estimators': [10, 50, 100, 200, 300], 'max_depth': [None, 10, 20], 'min_samples_split': [2, 5], 'min_samples_leaf': [1, 2]}","{'max_depth': 20, 'min_samples_leaf': 1, 'min_samples_split': 2, 'n_estimators': 100}",0.91875,0.8875,0.0008573038074835716,98.25313377380371
+olivetti,RandomForestClassifier,1,"{'n_estimators': [10, 50, 100]}",{'n_estimators': 100},0.921875,0.9375,2.6734396253065894e-05,5.318281173706055
+olivetti,RandomForestClassifier,2,"{'n_estimators': [10, 50, 100, 200], 'max_depth': [None, 10, 20]}","{'max_depth': None, 'n_estimators': 200}",0.925,0.925,0.00012041417981070363,18.575598001480103
+olivetti,RandomForestClassifier,3,"{'n_estimators': [10, 50, 100, 200], 'max_depth': [None, 10, 20], 'min_samples_split': [2, 5]}","{'max_depth': None, 'min_samples_split': 2, 'n_estimators': 200}",0.925,0.925,0.0002799896958121093,31.624393463134766
+olivetti,RandomForestClassifier,4,"{'n_estimators': [10, 50, 100, 200, 300], 'max_depth': [None, 10, 20], 'min_samples_split': [2, 5], 'min_samples_leaf': [1, 2]}","{'max_depth': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'n_estimators': 300}",0.928125,0.925,0.0007989307445510931,102.64531803131104
