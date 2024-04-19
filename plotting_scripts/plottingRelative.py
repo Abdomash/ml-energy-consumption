@@ -4,8 +4,9 @@ import matplotlib.pyplot as plt
 from matplotlib.ticker import FuncFormatter
 
 # Step 1: Traverse Subdirectories to collect CSV files
-results_dir = 'results'
-output_dir = 'plotsRelative'
+results_dir = os.path.join('..', 'results')
+output_dir = os.path.join('..', 'plotting_results', 'RelativePlots')
+
 if not os.path.exists(output_dir):
     os.makedirs(output_dir)
 

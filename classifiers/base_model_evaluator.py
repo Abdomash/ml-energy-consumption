@@ -30,9 +30,9 @@ def run_grid_searches(dataset_name, classifier, x, y, param_grids, test_size=0.2
     
     # Define file names and paths
     emissions_temp_file_name = f'temp_{dataset_name}_{classifier_name}_emissions.csv'
-    results_file_path = os.path.join("results", os.environ['DEVICE_NAME'], f'{dataset_name}_{classifier_name}_results.csv')
-    emissions_back_file_path = os.path.join("results", os.environ['DEVICE_NAME'], f'backup_{dataset_name}_{classifier_name}_emissions.csv')
-    results_back_file_path = os.path.join("results", os.environ['DEVICE_NAME'], f'backup_{dataset_name}_{classifier_name}_results.csv')
+    results_file_path = os.path.join("..", "results", os.environ['DEVICE_NAME'], f'{dataset_name}_{classifier_name}_results.csv')
+    emissions_back_file_path = os.path.join("..", "results", os.environ['DEVICE_NAME'], 'backup', f'backup_{dataset_name}_{classifier_name}_emissions.csv')
+    results_back_file_path = os.path.join("..", "results", os.environ['DEVICE_NAME'], 'backup', f'backup_{dataset_name}_{classifier_name}_results.csv')
 
     # Remove any existing files
     if os.path.exists(results_file_path):

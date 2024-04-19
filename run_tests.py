@@ -1,7 +1,7 @@
-from decision_tree import run_decision_tree
-from neural_nets import run_neural_nets
-from random_forest import run_random_forest
-from k_nearest_neighbor import run_knn
+from classifiers.decision_tree import run_decision_tree
+from classifiers.neural_nets import run_neural_nets
+from classifiers.random_forest import run_random_forest
+from classifiers.k_nearest_neighbor import run_knn
 from sklearn import datasets
 from ucimlrepo import fetch_ucirepo
 import pandas as pd
@@ -36,14 +36,15 @@ dataset = {
 }
 
 # Set the folder name to where the results will be saved as an environment variable
-os.environ['DEVICE_NAME'] = 'Abdallah-pc' # Change this to the name of your device
+os.environ['DEVICE_NAME'] = 'my-pc' # TODO: Change this to the name of your device
 
 if not os.path.exists(os.path.join('results',os.environ['DEVICE_NAME'])):
     os.makedirs(os.path.join('results',os.environ['DEVICE_NAME']))
+    os.makedirs(os.path.join('results',os.environ['DEVICE_NAME'],'backup'))
 
 # for each dataset, run the decision tree, neural nets, random forest, and k-nearest-neighbor models
 for name, (data, target) in dataset.items():
     run_decision_tree(name, data, target)
     run_neural_nets(name, data, target)
     run_random_forest(name, data, target)
-    # run_knn(name, data, target)
+    run_knn(name, data, target)

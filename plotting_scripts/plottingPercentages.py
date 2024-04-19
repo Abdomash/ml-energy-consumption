@@ -4,8 +4,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # Step 1: Traverse Subdirectories to collect CSV files
-results_dir = 'results'
-output_dir = 'plotsMean'
+results_dir = os.path.join('..', 'results')
+output_dir = os.path.join('..', 'plotting_results', 'MeanPlots')
+
 if not os.path.exists(output_dir):
     os.makedirs(output_dir)
 

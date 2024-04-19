@@ -4,8 +4,9 @@ import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 
 # Step 1: Traverse Subdirectories to collect CSV files
-results_dir = 'results'
-output_dir = 'plots'
+results_dir = os.path.join('..', 'results')
+output_dir = os.path.join('..', 'plotting_results', 'MeanPlots')
+
 if not os.path.exists(output_dir):
     os.makedirs(output_dir)
 
@@ -32,11 +33,8 @@ def combine_files_by_classifier_and_machine(experiment_files):
             combined_files[classifier_name][machine_name] = combined_df
     return combined_files
 
-# Step 3: Generate Combined Plots with Custom Legends for Classifiers
-def generate_separate_line_plots_for_datasets(combined_files):
-    machine_colors = ['blue', 'green']  # Color for each machine
-    line_styles = ['-', '--']  # Solid line for Machine 1, dashed line for Machine 2
-    
+# Step 3: Generate Combined Plots with Averages for Each Grid Search Number
+def generate_average_plots(combined_files):
     for classifier_name, machine_data in combined_files.items():
         datasets = set()
         for df in machine_data.values():
@@ -45,33 +43,39 @@ def generate_separate_line_plots_for_datasets(combined_files):
         for dataset in datasets:
             fig, ax = plt.subplots(figsize=(10, 6))
             fig.suptitle(f'{classifier_name.split("Classifier")[0]} - {dataset}', fontsize=16, ha='right')
-            machine_legend_elements = []
-
             ax.grid(True, which='both', linestyle='--', linewidth=0.5, color='gray')
 
-            for machine_idx, (machine_name, df) in enumerate(machine_data.items()):
-                color = machine_colors[machine_idx % len(machine_colors)]
-                line_style = line_styles[machine_idx % len(line_styles)]
-                dataset_df = df[df['dataset_name'] == dataset]
-                sorted_df = dataset_df.sort_values(by='grid_search_number')
+            # Initialize lists for averaged values
+            average_energy = []
+            average_accuracy = []
+            grid_search_numbers = sorted(df['grid_search_number'].unique())
 
-                ax.plot(sorted_df['energy_consumed'], sorted_df['test_accuracy'], label=f'Machine {machine_idx + 1}', marker='o', linestyle=line_style, color=color)
-                machine_legend_elements.append(Line2D([0], [0], color=color, label=f'Machine {machine_idx + 1}', marker='o', linestyle=line_style))
+            # Calculate mean values for each grid search number
+            for number in grid_search_numbers:
+                energy = []
+                accuracy = []
+                for df in machine_data.values():
+                    grid_df = df[(df['dataset_name'] == dataset) & (df['grid_search_number'] == number)]
+                    energy.append(grid_df['energy_consumed'].mean())
+                    accuracy.append(grid_df['test_accuracy'].mean())
 
-            ax.set_xlabel('Energy Consumed', fontsize=12)
-            ax.set_ylabel('Test Accuracy', fontsize=12)
-            
-            # Create and place legend
-            ax.legend(handles=machine_legend_elements, loc='best', title='Machines')
-            
+                average_energy.append(sum(energy) / len(energy))
+                average_accuracy.append(sum(accuracy) / len(accuracy))
+
+            # Plotting the average values
+            ax.plot(average_energy, average_accuracy, label='Average', marker='o', linestyle='-', color='red')
+
+            ax.set_xlabel('Average Energy Consumed', fontsize=12)
+            ax.set_ylabel('Average Test Accuracy', fontsize=12)
+            ax.legend(loc='best', title='Mean Performance')
+
             plt.subplots_adjust(top=0.9, bottom=0.1, left=0.1, right=0.75, hspace=0.4, wspace=0.4)
-            output_filename = f'{classifier_name}_{dataset}_line_plot.png'
-            output_path = os.path.join('plots', output_filename)
+            output_filename = f'{classifier_name}_{dataset}_average_plot.png'
+            output_path = os.path.join('plotsMean', output_filename)
             plt.savefig(output_path, bbox_inches='tight')
             plt.close()
 
 # Main execution
 experiment_files = collect_experiment_files(results_dir)
 combined_files = combine_files_by_classifier_and_machine(experiment_files)
-generate_separate_line_plots_for_datasets(combined_files)
-
+generate_average_plots(combined_files)
