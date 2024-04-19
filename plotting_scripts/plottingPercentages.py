@@ -4,8 +4,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # Step 1: Traverse Subdirectories to collect CSV files
-results_dir = os.path.join('..', 'results')
-output_dir = os.path.join('..', 'plotting_results', 'MeanPlots')
+results_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'results')
+output_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'plotting_results', 'PercentagePlots')
 
 if not os.path.exists(output_dir):
     os.makedirs(output_dir)
@@ -16,7 +16,7 @@ def collect_experiment_files(results_dir):
         machine_path = os.path.join(results_dir, machine_name)
         if os.path.isdir(machine_path):
             for filename in os.listdir(machine_path):
-                if filename.startswith('backup_'):
+                if filename.startswith('backup'):
                     continue
                 classifier_name = filename.split('_')[1]
                 experiment_files.setdefault(classifier_name, {}).setdefault(machine_name, []).append(os.path.join(machine_path, filename))
