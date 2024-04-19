@@ -1,5 +1,5 @@
 from sklearn.neural_network import MLPClassifier
-from base_model_evaluator import run_grid_searches
+from classifiers.base_model_evaluator import run_grid_searches
 
 
 def run_neural_nets(name, x, y):

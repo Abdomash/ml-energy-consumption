@@ -1,5 +1,5 @@
 from sklearn.neighbors import KNeighborsClassifier
-from base_model_evaluator import run_grid_searches 
+from classifiers.base_model_evaluator import run_grid_searches 
 
 # Fetch dataset
 def run_knn(name, x, y):

@@ -1,5 +1,5 @@
 from sklearn.tree import DecisionTreeClassifier
-from base_model_evaluator import run_grid_searches 
+from classifiers.base_model_evaluator import run_grid_searches 
 
 def run_decision_tree(name, x, y):
     

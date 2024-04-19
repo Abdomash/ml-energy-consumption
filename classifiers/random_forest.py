@@ -1,5 +1,5 @@
 from sklearn.ensemble import RandomForestClassifier
-from base_model_evaluator import run_grid_searches
+from classifiers.base_model_evaluator import run_grid_searches
 
 # Loop through each dataset
 def run_random_forest(name, x, y):
