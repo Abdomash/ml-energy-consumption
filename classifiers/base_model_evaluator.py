@@ -63,7 +63,7 @@ def run_grid_searches(dataset_name, classifier, x, y, param_grids, test_size=0.2
     results = []
 
     for i, param_grid in enumerate(param_grids):
-        print(f"Starting Grid Search {i+1} with parameters: {param_grid}")
+        print(f"\n\nStarting Grid Search {i+1} with parameters: {param_grid}\n\n")
 
         # Start tracking emissions and time
         start_time = time.time()
