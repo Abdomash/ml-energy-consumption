@@ -59,7 +59,7 @@ def generate_separate_line_plots_for_datasets(combined_files):
                 ax.plot(sorted_df['energy_consumed'], sorted_df['test_accuracy'], label=f'Machine {machine_idx + 1}', marker='o', linestyle=line_style, color=color)
                 machine_legend_elements.append(Line2D([0], [0], color=color, label=f'Machine {machine_idx + 1}', marker='o', linestyle=line_style))
 
-            ax.set_xlabel('Energy Consumed', fontsize=12)
+            ax.set_xlabel('Energy Consumed (kWh)', fontsize=12)
             ax.set_ylabel('Test Accuracy', fontsize=12)
             
             # Create and place legend

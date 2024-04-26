@@ -65,7 +65,7 @@ def generate_average_plots(combined_files):
             # Plotting the average values
             ax.plot(average_energy, average_accuracy, label='Average', marker='o', linestyle='-', color='red')
 
-            ax.set_xlabel('Average Energy Consumed', fontsize=12)
+            ax.set_xlabel('Average Energy Consumed (kWh)', fontsize=12)
             ax.set_ylabel('Average Test Accuracy', fontsize=12)
             ax.legend(loc='best', title='Mean Performance')
 
