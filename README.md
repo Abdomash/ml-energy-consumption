@@ -3,10 +3,10 @@
 ![](Heading.png)
 ## Overview
 
-A tool to help measure and analyze how different hyperparameter grid search techniques effect the accuracy and energy consumption of different machine learning models. The code is developed for the associated paper titled "**The Energy-Accuracy Trade-off of Extensive Grid Search for Hyperparameter Tuning**".
+A tool to help measure and analyze how different hyperparameter grid search techniques effect the accuracy and energy consumption of different machine learning models. The code is developed for the associated paper titled "**The Energy-Accuracy Trade-off of Hyperparameter Tuning**".
 
-#### Paper Link:
-- TBD
+#### Paper:
+- You can view the paper from [here](paper.pdf).
 
 ## Code Description
 
