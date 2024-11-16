@@ -5,8 +5,11 @@
 
 A tool to help measure and analyze how different hyperparameter grid search techniques effect the accuracy and energy consumption of different machine learning models. The code is developed for the associated paper titled "**The Energy-Accuracy Trade-off of Hyperparameter Tuning**".
 
-#### Paper:
+### Paper:
 - You can view the paper from [here](paper.pdf).
+
+### Presentation:
+- You can view the presentation from [here](presentation.pdf)
 
 ## Code Description
 
