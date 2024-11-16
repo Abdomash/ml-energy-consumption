@@ -9,7 +9,7 @@ A tool to help measure and analyze how different hyperparameter grid search tech
 - You can view the paper from [here](paper.pdf).
 
 ### Presentation:
-- You can view the presentation from [here](presentation.pdf)
+- You can view the presentation from [here](presentation.pdf).
 
 ## Code Description
 
